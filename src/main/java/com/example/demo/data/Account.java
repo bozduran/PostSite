@@ -1,83 +1,53 @@
 package com.example.demo.data;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
-import javax.persistence.Entity;
-import java.time.LocalDateTime;
+import jakarta.persistence.Entity;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+import org.hibernate.validator.constraints.UniqueElements;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 @Table(name = "ACCOUNTS")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long accountId;
+    @NotNull(message = "Email must be put on")
+    @UniqueElements
     private String email;
     private String firstName;
     private String lastName;
-    private String userName;
-    private LocalDateTime dateOfCreation;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Europe/Athens")
+    private Date dateOfCreation;
+    @OneToOne(cascade = {CascadeType.ALL})
+    private AccountCredentials accountCredentials;
 
+    @OneToMany
+    private List<Post> posts;
 
-    public Account(String email, String firstName, String lastName, String userName) {
+    public Account(String email, String firstName, String lastName,
+                   AccountCredentials accountCredentials) {
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
-        this.dateOfCreation = LocalDateTime.now();
+        this.accountCredentials = accountCredentials;
+        this.posts = new ArrayList<>();
     }
 
-    public Account() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public LocalDateTime getDateOfCreation() {
-        return dateOfCreation;
-    }
-
-    public void setDateOfCreation(LocalDateTime dateOfCreation) {
-        this.dateOfCreation = dateOfCreation;
+    public void addPostToAccount(Post post){
+        posts.add(post);
     }
 }

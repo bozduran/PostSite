@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All acounts</title>
+</head>
+<body>
+    <tbody>
+    <tr th:if="${accounts.empty}">
+        <td colspan="2"> No Accounts Available </td>
+    </tr>
+    <tr th:each="account : ${accounts}">
+        <td><span th:text="${account.toString()}"> Title </span></td>
+        <br><br>
+    </tr>
+    </tbody>
+
+</body>
+</html>

@@ -1,41 +1,43 @@
 package com.example.demo.data;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+
+import java.time.ZoneId;
 import java.util.Date;
+
 @Entity
 @Table(name = "ACCOUNT_CREDENTIALS")
 public class AccountCredentials {
 
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    @Column(name = "acc_cred_id")
+    private Long id;
     private String userName;
     private String passwordHash;
-    private LocalDateTime dateOfPasswordChange;
-    private int accountId;
+    @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Europe/Athens")
+    private Date dateOfPasswordChange;
 
-    public AccountCredentials(String userName, String passwordHash, int accountId) {
+    public AccountCredentials(String userName, String passwordHash) {
         this.userName = userName;
         this.passwordHash = passwordHash;
-        this.dateOfPasswordChange = LocalDateTime.now();;
-        this.accountId = accountId;
     }
 
     public AccountCredentials() {
 
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
+
 
     public String getUserName() {
         return userName;
@@ -53,19 +55,22 @@ public class AccountCredentials {
         this.passwordHash = passwordHash;
     }
 
-    public LocalDateTime getDateOfPasswordChange() {
+    @Override
+    public String toString() {
+        return "AccountCredentials{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", passwordHash='" + passwordHash + '\'' +
+                ", dateOfPasswordChange=" + dateOfPasswordChange +
+                '}';
+    }
+
+    public Date getDateOfPasswordChange() {
         return dateOfPasswordChange;
     }
 
-    public void setDateOfPasswordChange(LocalDateTime dateOfPasswordChange) {
+    public void setDateOfPasswordChange(Date dateOfPasswordChange) {
         this.dateOfPasswordChange = dateOfPasswordChange;
     }
 
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
 }
