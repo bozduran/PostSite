@@ -12,13 +12,10 @@ public class AccountService {
 
     AccountRepository accountRepository;
 
-    @Transactional
     public List<Account> getAllPersons() {
         return (List<Account>) accountRepository.findAll();
     }
 
-
-    @Transactional
     public void addPerson(Account account) {
         accountRepository.save(account);
     }
