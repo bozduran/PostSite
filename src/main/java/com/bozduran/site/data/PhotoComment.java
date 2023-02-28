@@ -1,17 +1,18 @@
 package com.bozduran.site.data;
 
+import jakarta.persistence.DiscriminatorValue;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Setter
 @Getter
 @NoArgsConstructor
 @Entity
-@PrimaryKeyJoinColumn(name = "photoComment")
+@DiscriminatorValue("PhotoPost")
 public class PhotoComment extends Comment {
     public String photoCommentName;
 

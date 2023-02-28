@@ -1,15 +1,18 @@
 package com.bozduran.site.data;
 
+import jakarta.persistence.DiscriminatorValue;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Setter
 @Getter
 @Entity
-@PrimaryKeyJoinColumn(name = "textComment")
+@NoArgsConstructor
+@DiscriminatorValue("TextComment")
 public class TextComment extends Comment {
 
     public String text;

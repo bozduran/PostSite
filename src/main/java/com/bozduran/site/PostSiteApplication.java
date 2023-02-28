@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @SpringBootApplication
-
-@EntityScan(basePackages = {"com.example.demo.data"})  // scan JPA entities manually
 public class PostSiteApplication {
 
     public static void main(String[] args) {

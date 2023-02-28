@@ -2,33 +2,33 @@ package com.bozduran.site.data;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-
-import jakarta.persistence.Entity;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-import org.hibernate.validator.constraints.UniqueElements;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Component
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 @Table(name = "ACCOUNTS")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long accountId;
-    @NotNull(message = "Email must be put on")
-    @UniqueElements
+    @Email(message="Not an email.")
+    @Column(unique=true)
     private String email;
+    @NotEmpty(message="Firstname is required")
     private String firstName;
+    @NotEmpty(message="Lastname is required")
     private String lastName;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Europe/Athens")
     private Date dateOfCreation;

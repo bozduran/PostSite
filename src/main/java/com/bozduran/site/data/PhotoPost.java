@@ -1,17 +1,18 @@
 package com.bozduran.site.data;
 
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
+import jakarta.persistence.Entity;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@PrimaryKeyJoinColumn(name = "photoPost")
+@DiscriminatorValue("PhotoPost")
 public class PhotoPost extends Post{
 
     private String photoFileName;

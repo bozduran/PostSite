@@ -1,14 +1,8 @@
 package com.bozduran.site.data;
 
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 
 import java.util.Date;
 import java.util.List;
@@ -17,10 +11,13 @@ import java.util.List;
 @Setter
 @Getter
 @Table(name = "POST")
-@Inheritance(strategy = InheritanceType.JOINED)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="post_type",
+        discriminatorType = DiscriminatorType.STRING)
 public abstract class Post {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private Date dateOfCreation;
     private int upVote;
