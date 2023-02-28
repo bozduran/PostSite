@@ -1,7 +1,7 @@
-package com.example.demo.service;
+package com.bozduran.site.service;
 
-import com.example.demo.data.Account;
-import com.example.demo.repository.AccountRepository;
+import com.bozduran.site.data.Account;
+import com.bozduran.site.repository.AccountRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,6 @@ import java.util.List;
 @Service
 public class AccountService {
 
-    @Autowired
     AccountRepository accountRepository;
 
     @Transactional

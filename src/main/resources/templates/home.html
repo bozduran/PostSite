@@ -2,13 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="/static/css/navbar.css" type="text/css" onload="this.media='all'">
-
+    <title>Home</title>
 </head>
-
 <body>
-
 <nav>
     <div class="topnav">
         <a class="active" href="/">Home</a>
@@ -16,13 +12,19 @@
         <a href="/contact">Contact</a>
         <a href="/about">About</a>
         <a href="/account/create-account">Create account</a>
-        <a href="/account/login">Log in</a>
     </div>
 </nav>
 
-<section>
+<div id="newPost">
+    <h6>New post</h6>
+    <form action="#" th:action="@{/post/create-new-post}" th:object="${textPost}" method="post">
+        <textarea  rows = "20" cols = "80" th:field = "*{postText}" > </textarea>
+        <p><input type="submit" value="Post" /> <input type="reset" value="Reset" /></p>
+
+    </form>
+
+</div>
 
 
-</section>
 </body>
 </html>

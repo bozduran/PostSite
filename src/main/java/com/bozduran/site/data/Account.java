@@ -1,4 +1,4 @@
-package com.example.demo.data;
+package com.bozduran.site.data;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -35,7 +35,7 @@ public class Account {
     @OneToOne(cascade = {CascadeType.ALL})
     private AccountCredentials accountCredentials;
 
-    @OneToMany
+    @OneToMany()
     private List<Post> posts;
 
     public Account(String email, String firstName, String lastName,

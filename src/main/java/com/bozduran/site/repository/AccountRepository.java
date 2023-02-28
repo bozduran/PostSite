@@ -1,6 +1,6 @@
-package com.example.demo.repository;
+package com.bozduran.site.repository;
 
-import com.example.demo.data.Account;
+import com.bozduran.site.data.Account;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

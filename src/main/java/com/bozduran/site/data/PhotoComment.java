@@ -1,4 +1,4 @@
-package com.example.demo.data;
+package com.bozduran.site.data;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

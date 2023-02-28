@@ -1,7 +1,8 @@
-package com.example.demo.data;
+package com.bozduran.site.data;
 
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.Entity;
@@ -9,6 +10,7 @@ import javax.persistence.Entity;
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 @PrimaryKeyJoinColumn(name = "textPost")
 public class TextPost extends Post{
 

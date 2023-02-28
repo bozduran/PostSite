@@ -1,17 +1,15 @@
-package com.example.demo.data;
+package com.bozduran.site.data;
 
-import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import java.time.LocalDateTime;
+import jakarta.persistence.Entity;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+
 import java.util.Date;
 import java.util.List;
 
@@ -23,7 +21,7 @@ import java.util.List;
 public abstract class Post {
 
     @Id
-    private String id;
+    private Long id;
     private Date dateOfCreation;
     private int upVote;
     private int downVotes;
@@ -37,4 +35,6 @@ public abstract class Post {
     public void addCommentToPost(Post comment){
         comments.add(comment);
     }
+
 }
+
