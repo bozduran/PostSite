@@ -1,6 +1,6 @@
 package com.bozduran.site.repository;
 
-import com.bozduran.site.data.AccountCredentials;
+import com.bozduran.site.domain.AccountCredentials;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,28 +1,22 @@
-package com.bozduran.site.data;
+package com.bozduran.site.domain;
 
 import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.Entity;
 
-@Getter
 @Setter
+@Getter
 @NoArgsConstructor
 @Entity
 @DiscriminatorValue("PhotoPost")
-public class PhotoPost extends Post{
+public class PhotoComment extends Comment {
+    public String photoCommentName;
 
-    private String photoFileName;
-
-    public PhotoPost(String photoFileName){
+    public PhotoComment(String photoCommentName){
         super();
-        this.photoFileName = photoFileName;
+        this.photoCommentName = photoCommentName;
     }
-
-
-
-
 }

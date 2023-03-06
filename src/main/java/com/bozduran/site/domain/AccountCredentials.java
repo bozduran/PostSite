@@ -1,4 +1,4 @@
-package com.bozduran.site.data;
+package com.bozduran.site.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
@@ -14,7 +14,7 @@ import java.util.Date;
 @Setter
 @Getter
 @NoArgsConstructor
-@Table(name = "ACCOUNT_CREDENTIALS")
+//@Table(name = "ACCOUNT_CREDENTIALS")
 public class AccountCredentials {
 
 
@@ -25,8 +25,9 @@ public class AccountCredentials {
     @Id
     @Column(unique = true)
     private String userName;
-    @NotEmpty(message = "write smth")
-    @Size(min = 6)
+    @NotEmpty(message = "Must be at least 8 character long.")
+    @Size(min = 8 ,message = "Must be at least 8 character long.")
+    @Size(min = 8)
     private String passwordHash;
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss", timezone="Europe/Athens")
     private Date dateOfPasswordChange;

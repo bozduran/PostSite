@@ -1,17 +1,18 @@
-package com.bozduran.site.data;
+package com.bozduran.site.domain;
 
 import jakarta.persistence.DiscriminatorValue;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.Entity;
+import lombok.ToString;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
+@ToString
 @DiscriminatorValue("TextPost")
 public class TextPost extends Post{
 

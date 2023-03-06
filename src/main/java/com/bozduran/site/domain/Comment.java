@@ -1,4 +1,4 @@
-package com.bozduran.site.data;
+package com.bozduran.site.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,8 +10,7 @@ import java.util.Date;
 @Entity
 @Setter
 @Getter
-@NoArgsConstructor
-@Table(name = "COMMENTS")
+//@Table(name = "COMMENTS")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="comment_type",
         discriminatorType = DiscriminatorType.STRING)
@@ -21,9 +20,10 @@ public abstract class Comment {
     private Long id;
     private Date dateOfCreation;
 
-    private Long userId;
-    public Comment(Long userId){
-        this.userId = userId;
+
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    private Post post;
+    public Comment(){
         this.dateOfCreation = new Date();
     }
 }

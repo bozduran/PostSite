@@ -1,4 +1,4 @@
-package com.bozduran.site.data;
+package com.bozduran.site.domain;
 
 import jakarta.persistence.DiscriminatorValue;
 import lombok.Getter;
@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
 
 @Setter
 @Getter
