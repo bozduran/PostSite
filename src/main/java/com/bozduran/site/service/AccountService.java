@@ -1,6 +1,6 @@
 package com.bozduran.site.service;
 
-import com.bozduran.site.domain.Account;
+import com.bozduran.site.entities.Account;
 
 public interface AccountService {
     void addPerson(Account account);

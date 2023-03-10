@@ -4,13 +4,15 @@ import com.bozduran.site.service.AccountService;
 import com.bozduran.site.service.AccountServiceImpl;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
+import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class UniqueEmailValidator
         implements ConstraintValidator<UniqueEmail,String> {
 

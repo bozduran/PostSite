@@ -1,11 +1,12 @@
-package com.bozduran.site.domain;
+package com.bozduran.site.entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.Date;
+import java.util.UUID;
 
 @Entity
 @Setter
@@ -16,8 +17,10 @@ import java.util.Date;
         discriminatorType = DiscriminatorType.STRING)
 public abstract class Comment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
+    private UUID id;
     private Date dateOfCreation;
 
 

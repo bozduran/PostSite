@@ -3,21 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="/static/css/navbar.css" type="text/css">
+
+    <style type="text/css">
+        nav {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ff0000;
+        }
+    </style>
 </head>
 <body>
+
 <nav>
-    <div class="topnav">
-        <a class="active" href="/">Home</a>
-        <a href="/news">News</a>
-        <a href="/contact">Contact</a>
-        <a href="/about">About</a>
-        <a href="/account/create-account">Create account</a>
-    </div>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about-us">About</a></li>
+        <li><a href="/account/create-account">Create account</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/login">Login</a></li>
+    </ul>
 </nav>
 
-<div id="newPost">
-    <h6>New post</h6>
+<div id="newPost" class="absolute">
+    <p class="ex4">New post</p>
     <form action="#" th:action="@{/post/create-new-post}" th:object="${textPost}" method="post">
         <textarea  rows = "20" cols = "80" th:field = "*{postText}" > </textarea>
         <p><input type="submit" value="Post" /> <input type="reset" value="Reset" /></p>

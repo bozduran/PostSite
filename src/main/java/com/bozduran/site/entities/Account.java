@@ -1,28 +1,29 @@
-package com.bozduran.site.domain;
+package com.bozduran.site.entities;
 
-import com.bozduran.site.validation.UniqueEmail;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-import org.springframework.stereotype.Component;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.util.*;
 
 @Entity
-@Component
 @Getter
 @Setter
+@AllArgsConstructor
 @NoArgsConstructor
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long accountId;
+    @GeneratedValue(generator = "UUID")
+    @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
+    @Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
+    private UUID id;
     @Email(message="Not an email.")
     @Column(unique=true)
     private String email;
@@ -39,14 +40,6 @@ public class Account {
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "account",cascade = CascadeType.ALL)
     private Set<Post> posts = new HashSet<>();
-
-    public Account(String email, String firstName, String lastName,
-                   AccountCredentials accountCredentials) {
-        this.email = email;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.accountCredentials = accountCredentials;
-    }
 
     public void addPostToAccount(Post post){
         posts.add(post);

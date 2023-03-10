@@ -1,11 +1,11 @@
 package com.bozduran.site.controller;
 
-import com.bozduran.site.domain.Account;
-import com.bozduran.site.domain.AccountCredentials;
+import com.bozduran.site.entities.Account;
+import com.bozduran.site.entities.AccountCredentials;
+import com.bozduran.site.exceptions.NotFoundException;
 import com.bozduran.site.service.AccountService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/account")
@@ -41,7 +41,7 @@ public class AccountController {
         if (result.hasErrors()) {
             return "create-account";
         }
-
+        theAccount.setDateOfCreation(new Date());
         accountService.addPerson(theAccount);
         accountService.getAllPersons();
         System.out.println(theAccount.toString() );
@@ -51,29 +51,8 @@ public class AccountController {
     @RequestMapping(value ="/all")
     public String getAllAccount(Model model){
         model.addAttribute("accounts" ,accountService.getAllPersons());
-        return "all-accountsDenug";
+        return "all-accountsDenug".describeConstable().orElseThrow(NotFoundException::new);
     }
 
-    public void dataAddToAccount(){
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/resources/MOCK_DATA_ACCPUNTS.csv"))) {
-            String line;
-            line = br.readLine();
-            while ((line = br.readLine()) != null) {
-                String[] values = line.split(",");
-                System.out.println(values[0] +" "+
-                        values[1]+" "+
-                        values[2]+" "+
-                        values[3]+" "+values[4]);
-                accountService.addPerson(
-                        new Account(values[2],values[0],values[1],
-                                new AccountCredentials(values[4],values[3] ))
-                );
-                //records.add(Arrays.asList(values));
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
 
 }

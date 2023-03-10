@@ -6,8 +6,54 @@
     <title>Title</title>
     <link rel="stylesheet" href="/static/css/navbar.css" media="print" onload="this.media='all'">
 
+    <style type="text/css">
+        nav {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        nav li {
+            margin: 0 20px;
+        }
+
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ff0000;
+        }
+    </style>
 </head>
 <body>
+<nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about-us">About</a></li>
+        <li><a href="/account/create-account">Create account</a></li>
+        <li><a href="/contact">Contact</a></li>
+        <li><a href="/login">Login</a></li>
+    </ul>
+</nav>
 <h6>Succesfull</h6>
 </body>
 </html>

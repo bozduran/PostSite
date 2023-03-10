@@ -1,27 +1,21 @@
-package com.bozduran.site.domain;
+package com.bozduran.site.entities;
 
 import jakarta.persistence.DiscriminatorValue;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import jakarta.persistence.Entity;
-import lombok.ToString;
 
 @Getter
 @Setter
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @DiscriminatorValue("TextPost")
 public class TextPost extends Post{
 
     private String postText;
 
-    public TextPost(String postText){
-        super();
-        this.postText = postText;
-    }
 
 
 }

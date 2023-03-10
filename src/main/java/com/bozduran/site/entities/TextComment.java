@@ -1,6 +1,7 @@
-package com.bozduran.site.domain;
+package com.bozduran.site.entities;
 
 import jakarta.persistence.DiscriminatorValue;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,15 +12,10 @@ import jakarta.persistence.Entity;
 @Getter
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @DiscriminatorValue("TextComment")
 public class TextComment extends Comment {
 
     public String text;
-
-    public TextComment(String text){
-        super();
-        this.text = text;
-    }
-
 
 }

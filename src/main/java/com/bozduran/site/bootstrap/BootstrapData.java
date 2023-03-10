@@ -1,6 +1,6 @@
 package com.bozduran.site.bootstrap;
 
-import com.bozduran.site.domain.*;
+import com.bozduran.site.entities.*;
 import com.bozduran.site.repository.AccountCredentialsRepository;
 import com.bozduran.site.repository.AccountRepository;
 import com.bozduran.site.repository.CommentRepository;
@@ -22,6 +22,7 @@ public class BootstrapData implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+
         System.out.println("Data bootstrapping.");
         //CREATE ACCOUNT
         Account account = new Account();
@@ -46,7 +47,7 @@ public class BootstrapData implements CommandLineRunner {
         savedAccount.addPostToAccount(savedPost);
 
         //ADD POST TO ACCOUNT
-        Account retreivedAccount = accountRepository.getAccountByAccountId(savedAccount.getAccountId());
+        Account retreivedAccount = accountRepository.getAccountById(savedAccount.getId());
         Post photoPost = new PhotoPost("new.png");
         photoPost.setAccount(retreivedAccount);
         val p = postRepository.save(photoPost);
@@ -60,5 +61,7 @@ public class BootstrapData implements CommandLineRunner {
         commentRepository.save(textComment);
 
         System.out.println("Data bootstrapping end.");
+
     }
+
 }

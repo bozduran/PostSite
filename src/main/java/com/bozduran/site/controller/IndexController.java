@@ -1,6 +1,6 @@
 package com.bozduran.site.controller;
 
-import com.bozduran.site.domain.TextPost;
+import com.bozduran.site.entities.TextPost;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
